@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vll vector<ll>
+#define pb push_back
+#define yes cout<<"YES"<<endl
+#define no cout<<"NO"<<endl
+
+int main()
+{
+    ll n,m,i,j,k,x,y,z,t;
+
+    cin>>t;
+
+    while(t--)
+    {
+        cin>>n>>k;
+
+        vll a(n);
+
+        int num=0;
+
+        for(int i=0; i<k; i++)
+        {
+            if(i%2==0)
+            {
+                for(int j=i; j<n; j+=k)a[j]=++num;
+            }
+            else
+            {
+                int j=i;
+                for(; j<n; j+=k);
+                for(j-=k; j>=0; j-=k)a[j]=++num;
+            }
+        }
+
+        for(auto x : a)cout<<x<<" ";
+        cout<<endl;
+
+    }
+}

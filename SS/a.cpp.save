@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vll vector<ll>
+#define pb push_back
+#define yes cout<<"YES"<<endl;
+#define no cout<<"NO"<<endl;
+
+int main()
+{
+    ll n,m,i,j,k,x,y,z,t;
+
+    cin>>t;
+
+    while(t--)
+    {
+        ll a,b,r;
+        cin>>a>>b>>r;
+        map<ll,ll>mp;
+
+        ll ans=abs(a-b);
+
+        for(ll x=1;x<=r;x+=32){
+
+            ll k= abs((a^x) - (b^x));
+            mp[k]++;
+            if(mp[k]>=100)break;
+            ans=min(ans,k);
+        }
+        cout<<ans<<endl;
+    }
+
+}

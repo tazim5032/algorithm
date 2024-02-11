@@ -1,0 +1,41 @@
+#include<iostream>
+#include<vector>
+#include<cstring>
+#include<math.h>
+using namespace std;
+
+long long n,a[15];
+
+long long dfs(int i, int j){
+
+    if(i>j)return 0;
+
+    long long ans=0;
+
+    for(int k=i;k<=j;k++){
+
+        long long tmp;
+
+        if(i==1 && j==n){
+            tmp=a[i]+dfs(i,k-1)+dfs(k+1,j);
+        }
+        else{
+            tmp=a[i-1]*a[j+1]+dfs(i,k-1)+dfs(k  +1,j);
+        }
+
+        ans=max(ans,tmp);
+    }
+
+    return ans;
+}
+int main(){
+
+    cin>>n;
+
+    for(int i=1;i<=n;i++)cin>>a[i];
+    a[0]=1;
+    a[n+1]=1;
+
+    cout<<dfs(1,n)<<endl;
+
+}
